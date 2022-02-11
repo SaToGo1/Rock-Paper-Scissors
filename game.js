@@ -14,37 +14,73 @@ function computerPlay () {
 
 function playRound(playerSelection, computerSelection){
 
-    let result = "result"
+    let result = 0;
     if (playerSelection == computerSelection){
-        result = "Draw! your opponent also pick " + playerSelection;
+        console.log("Draw! your opponent also pick " + playerSelection);
+        result = 0;
     }
     else if (playerSelection == "rock"){
         if (computerSelection == "paper") {
-            result = "You Lose! Paper beats Rock";
+            console.log("You Lose! Paper beats Rock");
+            result = 2;
         }
         else {
-            result = "You Win! Rock beats Scissors"
+            console.log("You Win! Rock beats Scissors");
+            result = 1;
         }
     }
     else if (playerSelection == "paper"){
         if (computerSelection == "scissors") {
-            result = "You Lose! Scissors beats Paper";
+            console.log("You Lose! Scissors beats Paper");
+            result = 2;
         }
         else {
-            result = "You Win! Paper beats Rock"
+            console.log("You Win! Paper beats Rock");
+            result = 1;
         }
     }
     else if (playerSelection == "scissors"){
         if (computerSelection == "rock") {
-            result = "You Lose! Rock beats Scissors";
+            console.log("You Lose! Rock beats Scissors");
+            result = 2;
         }
         else {
-            result = "You Win! Scissors beats Paper"
+            console.log("You Win! Scissors beats Paper");
+            result = 1;
         }
     } 
     return result;
 }
 
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+function game(){
+
+    let playerSelection = "empty"
+    let computerSelection = "empty"
+
+    for(let i = 0; i < 5; i++) {
+        playerWins = 0;
+        playerSelection = prompt("Select Rock, Paper or Scissors").toLowerCase();
+        console.log("checking to lower case" + playerSelection);
+        computerWins = 0;
+        computerSelection = computerPlay();
+
+        let result = playRound(playerSelection, computerSelection);
+        if (result == 1){
+            playerWins++;
+        }
+        else if(result == 2){
+            computerWins++;
+        }
+    }
+    if (computerWins > playerWins){
+        console.log("You lost the best of Five rounds.");
+    }
+    else if (computerWins < playerWins){
+        console.log("You win the best of Five rounds.");
+    }
+    else {
+        console.log("Draw in a best of Five rounds.");
+    }
+}
+
+game()
