@@ -12,66 +12,77 @@ function computerPlay () {
     return handType;    
 }
 
+/* **************************************
+gets (playerSelection, computerSelection)
+    both have a string with next values
+    "rock"
+    "paper"
+    "scissors" 
+
+returns result -> number that represents victory deafeat or draw
+    0-> Draw,
+    1-> Victory,
+    2-> Lose,
+   **************************************  */
 function playRound(playerSelection, computerSelection){
 
     let result = 0;
+    const resultDom = document.querySelector("#result");
     if (playerSelection == computerSelection){
-        console.log("Draw! your opponent also pick " + playerSelection);
+        resultDom.textContent = "Draw! your opponent also pick " + playerSelection;
         result = 0;
     }
     else if (playerSelection == "rock"){
         if (computerSelection == "paper") {
-            console.log("You Lose! Paper beats Rock");
+            resultDom.textContent = "You Lose! Paper beats Rock";
             result = 2;
         }
         else {
-            console.log("You Win! Rock beats Scissors");
+            resultDom.textContent = "You Win! Rock beats Scissors";
             result = 1;
         }
     }
     else if (playerSelection == "paper"){
         if (computerSelection == "scissors") {
-            console.log("You Lose! Scissors beats Paper");
+            resultDom.textContent = "You Lose! Scissors beats Paper";
             result = 2;
         }
         else {
-            console.log("You Win! Paper beats Rock");
+            resultDom.textContent = "You Win! Paper beats Rock";
             result = 1;
         }
     }
     else if (playerSelection == "scissors"){
         if (computerSelection == "rock") {
-            console.log("You Lose! Rock beats Scissors");
+            resultDom.textContent = "You Lose! Rock beats Scissors";
             result = 2;
         }
         else {
-            console.log("You Win! Scissors beats Paper");
+            resultDom.textContent = "You Win! Scissors beats Paper";
             result = 1;
         }
     } 
     return result;
 }
 
+/*
 function game(){
 
     let playerSelection = "empty"
     let computerSelection = "empty"
 
-    for(let i = 0; i < 5; i++) {
-        playerWins = 0;
-        playerSelection = prompt("Select Rock, Paper or Scissors").toLowerCase();
-        console.log("checking to lower case" + playerSelection);
-        computerWins = 0;
-        computerSelection = computerPlay();
+    playerSelection = prompt("Select Rock, Paper or Scissors").toLowerCase();
+    computerWins = 0;
+    computerSelection = computerPlay();
 
-        let result = playRound(playerSelection, computerSelection);
-        if (result == 1){
-            playerWins++;
-        }
-        else if(result == 2){
-            computerWins++;
-        }
+    let result = playRound(playerSelection, computerSelection);
+    if (result == 1){
+        playerWins++;
     }
+    else if(result == 2){
+        computerWins++;
+    }
+
     if (computerWins > playerWins){
         console.log("You lost the best of Five rounds.");
     }
@@ -82,5 +93,4 @@ function game(){
         console.log("Draw in a best of Five rounds.");
     }
 }
-
-game()
+*/
